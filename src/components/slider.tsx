@@ -44,7 +44,7 @@ const SliderMotion: React.FC<ItinerariesFormProps> = ({ images }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("This will run after 1 second!");
+      console.log("switch image");
       paginate(1);
     }, 10000);
     return () => clearTimeout(timer);
@@ -62,20 +62,8 @@ const SliderMotion: React.FC<ItinerariesFormProps> = ({ images }) => {
         animate="center"
         exit="exit"
         transition={{
-          x: { type: "spring", stiffness: 300, damping: 40 },
+          x: { type: "spring", stiffness: 300, damping: 30 },
           opacity: { duration: 0.5 },
-        }}
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={1}
-        onDragEnd={(e, { offset, velocity }) => {
-          const swipe = swipePower(offset.x, velocity.x);
-
-          if (swipe < -swipeConfidenceThreshold) {
-            paginate(1);
-          } else if (swipe > swipeConfidenceThreshold) {
-            paginate(-1);
-          }
         }}
       />
     </AnimatePresence>

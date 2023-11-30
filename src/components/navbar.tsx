@@ -9,15 +9,19 @@ import {
 } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
 
-const NavBar = () => {
+interface ItinerariesFormProps {
+  url_logo: string;
+}
+
+const NavBar: React.FC<ItinerariesFormProps> = ({ url_logo }) => {
   return (
     <Navbar>
       <NavbarBrand className="p-4">
         <Image
           isBlurred
-          src={"/images/logos/barca.svg"}
+          src={url_logo}
           alt="Logo des equipes"
-          width={50}
+          width={45}
           radius="none"
         />
       </NavbarBrand>
