@@ -28,11 +28,6 @@ const variants = {
   },
 };
 
-const swipeConfidenceThreshold = 10000;
-const swipePower = (offset: number, velocity: number) => {
-  return Math.abs(offset) * velocity;
-};
-
 const SliderMotion: React.FC<ItinerariesFormProps> = ({ images }) => {
   const [[page, direction], setPage] = useState([0, 0]);
 

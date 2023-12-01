@@ -11,9 +11,10 @@ import { Image } from "@nextui-org/react";
 
 interface ItinerariesFormProps {
   url_logo: string;
+  page: string;
 }
 
-const NavBar: React.FC<ItinerariesFormProps> = ({ url_logo }) => {
+const NavBar: React.FC<ItinerariesFormProps> = ({ url_logo, page }) => {
   return (
     <Navbar>
       <NavbarBrand className="p-4">
@@ -26,18 +27,24 @@ const NavBar: React.FC<ItinerariesFormProps> = ({ url_logo }) => {
         />
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
+        <NavbarItem isActive={page == "/teams"}>
+          <Link
+            color={page == "/teams" ? "primary" : "foreground"}
+            href="/teams"
+          >
             Les Équipes
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
+        <NavbarItem isActive={page == "/"}>
+          <Link color={page == "/" ? "primary" : "foreground"} href="/">
             Accueil
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
+        <NavbarItem isActive={page == "/players"}>
+          <Link
+            color={page == "/players" ? "primary" : "foreground"}
+            href="/players"
+          >
             Les joueurs
           </Link>
         </NavbarItem>

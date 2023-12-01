@@ -194,7 +194,7 @@ const Home = () => {
     <div
       className={`delay-300 duration-300 ease-in-out ${accueil_slider[teamIndex].background}`}
     >
-      <NavBar url_logo={accueil_slider[teamIndex].logo} />
+      <NavBar url_logo={accueil_slider[teamIndex].logo} page="/" />
       <div className="flex flex-col items-center justify-around gap-12 py-4">
         <Card isFooterBlurred className="w-4/5 m-auto">
           <div className="flex relative h-[70vh] justify-center items-center overflow-hidden slider-container rounded-md">
