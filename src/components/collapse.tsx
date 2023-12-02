@@ -1,11 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 
-interface ItinerariesFormProps {
+interface Props {
   open: boolean;
   children: React.ReactNode;
 }
 
-const Collapse: React.FC<ItinerariesFormProps> = ({ open, children }) => {
+const Collapse: React.FC<Props> = ({ open, children }) => {
   return (
     <AnimatePresence initial={false}>
       {open && (

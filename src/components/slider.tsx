@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import { useEffect, useState } from "react";
 
-interface ItinerariesFormProps {
+interface Props {
   images: string[];
 }
 
@@ -28,7 +28,7 @@ const variants = {
   },
 };
 
-const SliderMotion: React.FC<ItinerariesFormProps> = ({ images }) => {
+const SliderMotion: React.FC<Props> = ({ images }) => {
   const [[page, direction], setPage] = useState([0, 0]);
 
   const paginate = (newDirection: number) => {

@@ -9,12 +9,12 @@ import {
 } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
 
-interface ItinerariesFormProps {
+interface Props {
   url_logo: string;
   page: string;
 }
 
-const NavBar: React.FC<ItinerariesFormProps> = ({ url_logo, page }) => {
+const NavBar: React.FC<Props> = ({ url_logo, page }) => {
   return (
     <Navbar>
       <NavbarBrand className="p-4">
