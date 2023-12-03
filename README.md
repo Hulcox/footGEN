@@ -2,23 +2,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Assurez vous d'avoir Node JS et Npm
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+faite un npm i pour installer toutes les dépendences
+faite un npm run dev pour lancer l'application en mode dev sur le port 3000 (par default)
+faite un npm run build && npm run start pour lancer l'application en mode build sur le port 3000 (par default)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Descriptions des pages:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Acceuil : Page static avec un déffilement de plusieur equipe prédéfinit
+Teams : Page pour voir toutes les equipes, les modifiers, en ajouter et en supprimer, voir aussi une equipe plus détailler en cliquant sur l'equipe
+Players: Page pour voir tous les joueurs,  les modifiers, en ajouter et en supprimer.
 
 ## Learn More
 
