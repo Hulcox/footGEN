@@ -7,9 +7,16 @@ import { MdCheck, MdClose } from "react-icons/md";
 interface Props {
   team?: any;
   toggleOpen?: any;
+  editable?: boolean;
+  setTeams: any;
 }
 
-const TeamForm: React.FC<Props> = ({ team, toggleOpen }) => {
+const TeamForm: React.FC<Props> = ({
+  team,
+  toggleOpen,
+  editable = false,
+  setTeams,
+}) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [inputPrimaryColor, setPrimaryColor] = useState(
     team?.primaryColor.slice(1) || ""
@@ -18,8 +25,8 @@ const TeamForm: React.FC<Props> = ({ team, toggleOpen }) => {
     team?.secondaryColor.slice(1) || ""
   );
   const [inputSlogan, setInputSlogan] = useState(team?.slogan || "");
-  const [inputNickName, setInputNickName] = useState(team?.slogan || "");
-  const [inputName, setInputName] = useState(team?.slogan || "");
+  const [inputNickName, setInputNickName] = useState(team?.nickname || "");
+  const [inputName, setInputName] = useState(team?.name || "");
 
   const validateHexaCode = (value: any) => value.match(/^[a-zA-Z0-9]{0,6}$/i);
 
@@ -45,6 +52,70 @@ const TeamForm: React.FC<Props> = ({ team, toggleOpen }) => {
     } else {
       alert("Veuillez sélectionner un fichier SVG valide.");
     }
+  };
+
+  const fetchEditTeam = () => {
+    fetch(`http://localhost:8080/teams/${team.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: inputName,
+        nickname: inputNickName,
+        slogan: inputSlogan,
+        primaryColor: "#" + inputPrimaryColor,
+        secondaryColor: "#" + inputSecondaryColor,
+        logo: team.logo,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((updatedTeamResponse) => {
+        toggleOpen();
+        // Handle the updated team data
+        setTeams(updatedTeamResponse);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error updating team:", error.message);
+      });
+  };
+
+  const fetchAddTeam = () => {
+    fetch(`http://localhost:8080/teams/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: inputName,
+        nickname: inputNickName,
+        slogan: inputSlogan,
+        primaryColor: "#" + inputPrimaryColor,
+        secondaryColor: "#" + inputSecondaryColor,
+        logo: "",
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((updatedTeamResponse) => {
+        toggleOpen();
+        // Handle the updated team data
+        setTeams(updatedTeamResponse);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error updating team:", error.message);
+      });
   };
 
   return (
@@ -142,7 +213,14 @@ const TeamForm: React.FC<Props> = ({ team, toggleOpen }) => {
         }
       />
       <div className="flex justify-end gap-4">
-        <Button color="success" size="sm" endContent={<MdCheck />}>
+        <Button
+          color="success"
+          size="sm"
+          endContent={<MdCheck />}
+          onClick={() => {
+            editable ? fetchEditTeam() : fetchAddTeam();
+          }}
+        >
           Valider
         </Button>
         <Button

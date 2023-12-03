@@ -97,7 +97,7 @@ const Home = () => {
       logo: "/images/logos/om.svg",
       title_stade: "OM - Orange Vélodrome",
       title_player: "OM - Les joueurs",
-      background: "bg-gradient-to-r from-[#2faee0] to-white to-90%",
+      background: "bg-gradient-to-tr from-[#2faee0] to-white to-90%",
     },
     {
       logo: "/images/logos/barca.svg",
@@ -105,7 +105,7 @@ const Home = () => {
       title_stade: "Barça - Camp Nou",
 
       title_player: "Barça - Les joueurs",
-      background: "bg-gradient-to-r from-[#004d98] to-[#a50044] to-90%",
+      background: "bg-gradient-to-tr from-[#a50044] to-[#004d98] to-90%",
     },
     {
       logo: "/images/logos/real.svg",
@@ -113,7 +113,7 @@ const Home = () => {
       title_stade: "Real - Santiago Bernabeu",
 
       title_player: "Real - Les joueurs",
-      background: "bg-gradient-to-r  from-[#FEBE10] to-[#00529F] to-90%",
+      background: "bg-gradient-to-tr  from-[#FEBE10] to-[#00529F] to-90%",
     },
 
     {
@@ -122,7 +122,7 @@ const Home = () => {
       title_stade: "Bayern - Alianz Arena",
 
       title_player: "Bayern - Les joueurs",
-      background: "bg-gradient-to-r from-[#0066b2] to-[#dc052d] to-90%",
+      background: "bg-gradient-to-tr from-[#0066b2] to-[#dc052d] to-90%",
     },
     {
       logo: "/images/logos/arsenal.svg",
@@ -130,14 +130,14 @@ const Home = () => {
       title_stade: "Arsenal - Emirates Stadium",
 
       title_player: "Arsenal - Les joueurs",
-      background: "bg-gradient-to-r from-[#DB0007] to-[#9C824A] to-90%",
+      background: "bg-gradient-to-tr from-[#DB0007] to-[#9C824A] to-90%",
     },
     {
       logo: "/images/logos/manchester_city.svg",
 
       title_stade: "Manchester City - Etihad Stadium",
       title_player: "Manchester City - Les joueurs",
-      background: "bg-gradient-to-r from-[#6CABDD] to-[#1C2C5B] to-90%",
+      background: "bg-gradient-to-tr from-[#6CABDD] to-[#1C2C5B] to-90%",
     },
     {
       logo: "/images/logos/manchester_united.svg",
@@ -145,7 +145,7 @@ const Home = () => {
       title_stade: "Mancherster United - Old Trafford",
 
       title_player: "Mancherster United - Les joueurs",
-      background: "bg-gradient-to-r from-[#DA291C] to-[#FBE122] to-90%",
+      background: "bg-gradient-to-tr from-[#DA291C] to-[#FBE122] to-90%",
     },
     {
       logo: "/images/logos/rc_lens.svg",
@@ -153,7 +153,7 @@ const Home = () => {
       title_stade: "RC Lens - Stade Bollaert",
 
       title_player: "RC Lens - Les joueurs",
-      background: "bg-gradient-to-r from-[#EC1C24] to-[#FFF200] to-90%",
+      background: "bg-gradient-to-tr from-[#EC1C24] to-[#FFF200] to-90%",
     },
     {
       logo: "/images/logos/ol.svg",
@@ -161,7 +161,7 @@ const Home = () => {
       title_stade: "OL - Groupama Staduim",
 
       title_player: "OL - Les joueurs",
-      background: "bg-gradient-to-r from-[#da0812] to-[#14387f] to-90%",
+      background: "bg-gradient-to-tr from-[#da0812] to-[#14387f] to-90%",
     },
     {
       logo: "/images/logos/psg.svg",
@@ -169,7 +169,7 @@ const Home = () => {
       title_stade: "PSG - Parc des princes",
 
       title_player: "PSG - Les joueurs",
-      background: "bg-gradient-to-r from-[#004170] to-[#DA291C] to-90%",
+      background: "bg-gradient-to-tr from-[#004170] to-[#DA291C] to-90%",
     },
   ];
 

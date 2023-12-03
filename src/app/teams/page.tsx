@@ -4,18 +4,35 @@ import Collapse from "@/components/collapse";
 import NavBar from "@/components/navbar";
 import TeamForm from "@/components/teamForm";
 import { Button, Card, CardBody } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdAdd } from "react-icons/md";
+
+async function getAllTeams() {
+  const res = await fetch("http://localhost:8080/teams/all");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
 
 const TeamsPage = () => {
   const [open, setOpen] = useState(false);
+  const [teams, setTeams] = useState([]);
 
   const toggleOpen = () => {
     setOpen(!open);
   };
 
+  useEffect(() => {
+    getAllTeams().then((res) => {
+      setTeams(res);
+    });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-slate-500 to-slate-800">
+    <div className="min-h-screen bg-gradient-to-tr from-slate-500 to-slate-800 to-90%">
       <NavBar url_logo="" page="/teams" />
       <div className="w-2/5 m-auto py-4 flex flex-col gap-4">
         <div>
@@ -31,38 +48,26 @@ const TeamsPage = () => {
         <Collapse open={open}>
           <Card>
             <CardBody>
-              <TeamForm toggleOpen={toggleOpen} />
+              <TeamForm toggleOpen={toggleOpen} setTeams={setTeams} />
             </CardBody>
           </Card>
         </Collapse>
       </div>
       <div className="w-4/5 m-auto py-8 flex gap-8 justify-center flex-wrap">
-        <CardTeam
-          primaryColor="#2faee0"
-          secondaryColor="#ffffff"
-          logo="om.svg"
-          name="L'Olympique de Marseille"
-          nickname="OM"
-          slogan="Aller L'OM"
-          isNotDeletable
-        />
-        <CardTeam
-          primaryColor="#a50044"
-          secondaryColor="#004d98"
-          logo="barca.svg"
-          name="FC Barcelone"
-          nickname="Barca"
-          slogan="MESSIIIIIIIIIIII"
-          isNotDeletable
-        />
-        <CardTeam
-          primaryColor="#FEBE10"
-          secondaryColor="#00529F"
-          logo="real.svg"
-          name="Real de Madrid"
-          nickname="Read"
-          slogan="CR7"
-        />
+        {teams?.map((team: any, key) => (
+          <CardTeam
+            teamId={team.id}
+            primaryColor={team.primaryColor}
+            secondaryColor={team.secondaryColor}
+            logo={team.logo}
+            name={team.name}
+            nickname={team.nickname}
+            slogan={team.slogan}
+            isDeletable={team.deletable}
+            setTeams={setTeams}
+            key={key}
+          />
+        ))}
       </div>
     </div>
   );
