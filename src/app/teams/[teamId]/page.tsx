@@ -32,7 +32,7 @@ const TeamDetailPage = ({ params }: { params: { teamId: string } }) => {
     >
       <NavBar url_logo={`/images/logos/${team.logo}`} page="/teams" />
       <div className="w-2/5 m-auto py-4">
-        <TeamDetail team={team} />
+        <TeamDetail team={team} setTeam={setTeam} />
       </div>
     </div>
   );
